@@ -24,12 +24,10 @@
             }
         }
 
-         //Allows us to write queries
          public function query($sql) {
             $this->statement = $this->dbHandler->prepare($sql);
         }
 
-        //Bind values
         public function bind($parameter, $value, $type = null) {
             switch (is_null($type)) {
                 case is_int($value):
@@ -47,7 +45,6 @@
             $this->statement->bindValue($parameter, $value, $type);
         }
 
-        //Execute the prepared statement
         public function execute() {
             return $this->statement->execute();
         }
@@ -64,7 +61,6 @@
             return $this->statement->fetch(PDO::FETCH_OBJ);
         }
 
-        //Get's the row count
         public function rowCount() {
             return $this->statement->rowCount();
         }

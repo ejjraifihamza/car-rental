@@ -37,7 +37,7 @@
                 if (empty($data['username'])) {
                     $data['usernameError'] = 'Please enter username.';
                 } elseif (!preg_match($nameValidation, $data['username'])) {
-                    $data['usernameError'] = 'Name can only contain letters and numbers and {6,12}.';
+                    $data['usernameError'] = 'To short.';
                 }
                 
                 if(empty($data['email'])){
@@ -169,7 +169,8 @@
                 $data = [
                     'user_email' => '',
                     'car_name' => '',
-                    'date_between' => '',
+                    'begin' => '',
+                    'finish' => '',
                     'emailError' => '',
                     'carError' => '',
                     'dateError' => ''
@@ -182,7 +183,8 @@
                     $data = [
                         'user_email' => trim($_POST['user_email']),
                         'car_name' => trim($_POST['car_name']),
-                        'date_between' => trim($_POST['date_between']),
+                        'begin' => trim($_POST['begin']),
+                        'finish' => trim($_POST['finish']),
                         'emailError' => '',
                         'carError' => '',
                         'dateError' => ''
@@ -197,12 +199,16 @@
                         $data['carError'] = 'Please enter a car name.';
                     }
 
-                    if(empty($data['date_between'])){
+                    if(empty($data['begin'])){
+                        $data['dateError'] = 'Please enter a date.';
+                    }
+
+                    if(empty($data['finish'])){
                         $data['dateError'] = 'Please enter a date.';
                     }
 
                     if(empty($data['emailError']) && empty($data['carError']) && empty($data['dateError'])){
-                        $reservationDone = $this->userModel->makeReservation($data);
+                        $reservationDone = $this->userModel->reserv($data);
                         if($reservationDone){
                             $_SESSION['reservation'] = "<div class='success1'>
                                                             <span>reservation added Successfully</span>

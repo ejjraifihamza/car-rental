@@ -10,7 +10,9 @@
 
 <div class="main-content">
         <div class="wrrapper">
+            <div class="hd">
             <h1 class="hadmin">Manage Cars</h1>
+            </div>
                 <br>
               <a href="<?php echo URLROOT ?>/admins/addCars" class="btn-zero2">Add Car</a>
               <br/><br/><br/>

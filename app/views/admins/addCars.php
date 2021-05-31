@@ -10,7 +10,9 @@
 
 <div class="main-content">
     <div class="wrrapper">
+        <div class="hd">
         <h1 class="hadmin">Add Car</h1>
+        </div>
 
         
         <br><br>

@@ -10,7 +10,9 @@
 
 <div class="main-content">
     <div class="wrrapper">
+        <div class="hd">
         <h1 class="hadmin">Add Admin</h1>
+        </div>
         <br><br>
 
         <form action="<?php echo URLROOT; ?>/admins/addAdmins" method="POST">
@@ -52,7 +54,7 @@
             <tr>
                 <td>Confirm Password</td>
                 <td>
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password *" value="">
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password *" value="<?php echo ($_POST['confirmPassword']) ?? '' ?>">
                     <span class="invalidFeedback">
                         <?php echo $data['confirmPasswordError']; ?>
                     </span>

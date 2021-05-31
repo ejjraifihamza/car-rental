@@ -8,4 +8,4 @@
 
 2. PDO [x]
 
-3. how to display alert msg from php []
+3. how to display alert msg from php [x]

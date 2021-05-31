@@ -12,7 +12,9 @@
 
 <div class="main-content">
         <div class="wrrapper">
+            <div class="hd">
             <h1 class="hadmin">Dashboard</h1>
+            </div>
             <br><br>
             <div class="fc">
             <?php
@@ -25,6 +27,11 @@
                 }
     
              ?>
+
              </div>
+             <canvas id="myChart"></canvas>
         </div>
     </div>
+<?php
+   require APPROOT . '/views/includes/footer.php';
+?>

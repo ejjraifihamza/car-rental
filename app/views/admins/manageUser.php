@@ -11,7 +11,9 @@
 
 <div class="main-content">
         <div class="wrrapper">
+            <div class="hd">
             <h1 class="hadmin">Manage users</h1>
+            </div>
              <br>
 
             <table class="tbl-full">

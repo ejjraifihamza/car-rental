@@ -10,7 +10,9 @@
 
 <div class="container-login">
     <div class="wrapper-login">
-        <h2>Register</h2>
+        <div class="hd">
+        <h2 class="hadmin3">Register</h2>
+        </div>
 
         <form action="<?php echo URLROOT; ?>/users/register" method ="POST">
         <input type="text" placeholder="Username *" name="username" value="<?php echo ($_POST['username']) ?? '' ?>">
@@ -28,7 +30,7 @@
             <?php echo $data['passwordError']; ?>
         </span>
 
-        <input type="password" placeholder="Confirm Password *" name="confirmPassword">
+        <input type="password" placeholder="Confirm Password *" name="confirmPassword" value="<?php echo ($_POST['confirmPassword']) ?? '' ?>">
         <span class="invalidFeedback">
             <?php echo $data['confirmPasswordError']; ?>
         </span>

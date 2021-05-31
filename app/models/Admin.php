@@ -112,25 +112,42 @@
 
         }
 
-        public function addCars($data){
-            $this->db->query("INSERT INTO cars (title, image_name, active) VALUES (:title, :image_name, :active)");
+        // public function addCars($data){
+        //     $this->db->query("INSERT INTO cars (title, image_name, active) VALUES (:title, :image_name, :active)");
 
-            $this->db->bind(':title', $data['title']);
-            $this->db->bind(':image_name', $data['image_name']);
-            $this->db->bind(':avtive', $data['active']);
+        //     $this->db->bind(':title', $data['title']);
+        //     $this->db->bind(':image_name', $data['image_name']);
+        //     $this->db->bind(':avtive', $data['active']);
 
-            if($this->db->execute()){
-                return true;
-            }else{
-                return false;
-            }
+        //     if($this->db->execute()){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // }
+
+        public function addCars($title,$price,$active,$image,$tmp){
+
+
+           
+            $this->db->query("INSERT INTO cars (title, price, image_name, active ) VALUES ($title, $price, $image, $active)");
+                   $this->db->bind(':title', $data['title']);
+                   $this->db->bind(':image_name', $data['image_name']);
+                $this->db->bind(':avtive', $data['active']);
+                if($this->db->execute()){
+                             return true;
+                         }else{
+                             return false;
+                         }
+
         }
 
         public function showReservation(){
-            $this->db->query("SELECT * FROM reservation ORDER BY id ASC");
+            $this->db->query("SELECT * FROM reserv ORDER BY id ASC");
 
             $results = $this->db->resultSet();
 
             return $results;
         }
+
     }

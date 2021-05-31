@@ -20,7 +20,9 @@
         ?>
     </div>
     <div class="wrapper-login">
-        <h2>Sign in</h2>
+        <div class="hd">
+        <h2 class="hadmin3">Sign in</h2>
+        </div>
 
         <form action="<?php echo URLROOT; ?>/users/login" method ="POST">
         <input type="text" placeholder="Username *" name="username" value="<?php echo ($_POST['username']) ?? '' ?>">

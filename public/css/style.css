@@ -197,7 +197,19 @@ input::placeholder {
 
 .invalidFeedback {
   color: #ff0000;
-  width: 700;
+  /* width: 700; */
+  animation: v 3s 1;
+}
+@keyframes v {
+  0% {
+    letter-spacing: 0;
+  }
+  30% {
+    letter-spacing: 1px;
+  }
+  100% {
+    letter-spacing: 0;
+  }
 }
 
 .section-cars {
@@ -205,6 +217,7 @@ input::placeholder {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  overflow-x: hidden;
 }
 
 .container-cars {
@@ -261,6 +274,7 @@ input::placeholder {
   background: linear-gradient(-70deg, #a2facf, #64acff);
   background-size: 400% 400%;
   animation: gradient 5s ease infinite;
+  overflow-x: hidden;
 }
 
 .wrrapper1 {
@@ -283,9 +297,38 @@ input::placeholder {
   height: 50px;
   font-size: 20px;
 }
-
+.hd {
+  /* transform: translateY(-400%); */
+  animation: vv 3s 1;
+}
+@keyframes vv {
+  0% {
+    transform: translateY(-500%);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .hadmin {
   color: #426696;
+  animation: tn 3s 1;
+}
+@keyframes tn {
+  0% {
+    letter-spacing: 0;
+  }
+  30% {
+    letter-spacing: 15px;
+  }
+  100% {
+    letter-spacing: 0;
+  }
+}
+.hadmin3 {
+  color: #000000;
   animation: tn 3s 1;
 }
 @keyframes tn {
@@ -426,6 +469,14 @@ table tr td {
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  transform: translateX(300%);
+  transition: transform 1s ease;
+}
+.flex:nth-of-type(even) {
+  transform: translateX(-300%);
+}
+.flex.show {
+  transform: translateX(0);
 }
 .testing span {
   text-transform: uppercase;
@@ -599,5 +650,58 @@ table tr td {
   width: 400px;
 }
 .tbl-30 {
-  min-width: 60%;
+  min-width: 70%;
+}
+.all {
+  display: flex;
+}
+.right {
+  margin-left: 350px;
+}
+.left {
+  animation: lf 3s 1;
+}
+@keyframes lf {
+  0% {
+    transform: translateX(-500%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.hadmin2 {
+  font-size: 20px;
+  /* margin-left: 60px; */
+  text-align: center;
+}
+.sh-img img {
+  border-radius: 15px;
+}
+.right {
+  /* transform: translateX(500%); */
+  animation: rg 5s 1;
+}
+@keyframes rg {
+  0% {
+    transform: translateX(500%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+  /* 90% {
+    transform: translateX(0);
+    opacity: ;
+  } */
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

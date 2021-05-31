@@ -11,7 +11,9 @@
 
 <div class="main-content">
         <div class="wrrapper">
+            <div class="hd">
             <h1 class="hadmin">Manage Admin</h1>
+            </div>
              <br>
             <div class="fc">
              <?php

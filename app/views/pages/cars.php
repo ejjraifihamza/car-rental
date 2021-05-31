@@ -30,7 +30,7 @@
 
                 <div class="reserv-car">
 
-                <a href="<?php echo URLROOT ?>/users/reservation?title=<?php echo $car->title; ?>" class="btn-zero2">Reserve now</a>
+                <a href="<?php echo URLROOT ?>/users/reservation?title=<?php echo $car->title; ?>&image_name=<?php echo $car->image_name; ?>" class="btn-zero2">Reserve now</a>
 
                 </div>
             

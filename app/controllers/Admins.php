@@ -60,6 +60,9 @@
             $this->view('admins/login', $data);
         }
 
+
+
+
         public function createAdminSession($user){
             $_SESSION['loginAdmin'] = "<div class='success1'>
                                             <span>Login Successfully</span>
@@ -143,7 +146,7 @@
                 }
                 
                 $this->view('admins/updatePassword', $data);
-            }
+        }
 
 
         public function updateAdmin(){
@@ -155,29 +158,67 @@
         public function deleteCars(){
             $this->view('admins/deleteCars');
         }
+
+
         public function addCars(){
 
-            $data = [
-                'title' => '',
-                'price' => '',
-                'active' => '',
-                'image_name' => '',
-                'source_path' => ''
-                ];
+            // $data = [
+            //     'title' => '',
+            //     'price' => '',
+            //     'active' => '',
+            //     'image_name' => '',
+            //     'source_path' => ''
+            //     ];
 
-                if(isset($_REQUEST['submit'])){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+                    $title = $_POST['title'];
+                    $price = $_POST['price'];
+                    $active = $_POST['active'];
+                    $image = $_FILES['image_name']['name'];
+                    $tmp = $_FILES['image_name']['tmp_name'];
+                    $upload = "C:\\xampp\htdocs\mvc2\public\up-img/".$image;
+                    if(!empty($title) && !empty($price) && !empty($active) ){
+                        if(move_uploaded_file($tmp, $upload)==true){
+                            if($this->adminModel->addCars($title,$price,$active,$image,$tmp)===true){
+                                echo "seccuss";
+                            }
+                            }
+                    }
+
+                   
+                        
+                            //     $name = $_POST['name'];
+                            //     $model = $_POST['model'];
+                            //     $Price = $_POST['Price'];
+                            //     $description = $_POST['description'];
+                            //     $image = $_FILES['image']['name'];
+                            //     $image1 = $_FILES['image']['tmp_name'];
+                            //     $Disponible = $_POST['Disponible'];
+                            //     $catégory = $_POST['catégory'];
+                            //     $upload= "C:\xampp\htdocs\Vehicle_rental\public\upload/".$image;
+                            //   if(!empty($name) && !empty($model) && !empty($Price) && !empty($description)  && !empty($Disponible) && !empty($catégory) ){
+                            //       if(move_uploaded_file($image1, $upload)==true){
+                            //         if($this->vehicleModel->add_vehicle($name,$model,$Price,$image,$image1,$description,$Disponible,$catégory)===true){
+
+
+                    // $data = [
+                    //     'title' => $_POST['title'],
+                    //     'price' => $_POST['price'],
+                    //     ''
+                    // ];
 
 
                 // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // stripping or encoding unwanted character
 
-                $data = [
-                    'title' => $_POST['title'],
-                    'price' => $_POST['price'],
-                    'active' => $_POST['active'],
-                    'image_name' => $_FILES['image_name']['name'],
-                    'source_path' => $_FILES['image_name']['tmp_name'],
-                    // 'distination_path' => ''
-                    ];
+                // $data = [
+                //     'title' => $_POST['title'],
+                //     'price' => $_POST['price'],
+                //     'active' => $_POST['active'],
+                //     'image_name' => $_FILES['image_name']['name'],
+                //     'source_path' => $_FILES['image_name']['tmp_name'],
+                    
+                //     ];
 
                 // $title = $_POST['title'];
 
@@ -185,40 +226,43 @@
 
                 // $active = $_POST['active'];
 
-                if(isset($_FILES['image_name']['name'])){
+                // if(isset($_FILES['image_name']['name'])){
 
-                $image_name = $_FILES['image_name']['name'];
+                // $image_name = $_FILES['image_name']['name'];
 
                 // $ext = end(explode('.', $image_name));
 
-                $ext = explode('.', $image_name);
+                // $ext = explode('.', $image_name);
 
-                $file_extension = end($ext);
+                // $file_extension = end($ext);
                 
-                $data['image_name'] = "car_".rand(000, 999).'.'.$file_extension;
+                // $data['image_name'] = "car_".rand(000, 999).'.'.$file_extension;
 
                 // $data['image_name'] = $image_name;
 
                 
                 // $source_path = $_FILES['image_name']['tmp_name'];
 
-                $distination_path = "../up-img/".$image_name;
+                // $distination_path = "../up-img/".$image_name;
 
-                $move = move_uploaded_file($data['source_path'], $distination_path);
+                // $move = move_uploaded_file($data['source_path'], $distination_path);
 
                 
                 
-                if($move == true){
-                    $this->adminModel->addCars($data);
-                }
+                // if($move == true){
+                //     $this->adminModel->addCars($data);
+                // }
+
+
+
             }
 
 
+            $this->view('admins/addCars');
           }
             
 
-            $this->view('admins/addCars', $data);
-        }
+        
 
         public function addAdmins(){
 
@@ -247,14 +291,14 @@
                     'confirmPasswordError' => ''
                 ];
 
-                $nameValidation = "/^[a-zA-Z0-9]*$/";
+                $nameValidation = "/^[a-zA-Z0-9]{6,12}$/";
                 $passwordValidation = '/^(.{0,7}|[^a-z]*|[^\d]*)$/i';
 
                 
                 if (empty($data['username'])) {
                     $data['usernameError'] = 'Please enter username.';
                 } elseif (!preg_match($nameValidation, $data['username'])) {
-                    $data['usernameError'] = 'Name can only contain letters and numbers.';
+                    $data['usernameError'] = 'Too short.';
                 }
 
                 if(empty($data['email'])){
@@ -335,5 +379,8 @@
         public function deleteUser(){
             $this->view('admins/deleteUser');
         }
+
+    
         
     }
+
